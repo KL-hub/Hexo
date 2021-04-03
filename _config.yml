@@ -103,7 +103,7 @@ theme: hexo-theme-yilia-plus
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/KL-hub/KL-hub.github.io.git
+  repo: https://KL-hub:18201697093li@github.com/KL-hub/KL-hub.github.io.git
   branch: main
 
 jsonContent:
