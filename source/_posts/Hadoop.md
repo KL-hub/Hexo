@@ -9,6 +9,7 @@ categories: 大数据
 
 ###### HDFS
 
+```
 优点
 
 1、高容错性自动保存多个副本，丢失后可自动恢复。
@@ -24,40 +25,40 @@ categories: 大数据
 2、无法高效的对大量小文件存储
 
 3、不支持文件并发访问，文件随机修改。
+```
 
 NameNode : 就是Master,它是一个主管、管理者
 
- 1、管理HDFS的名称空间
-
+```
+1、管理HDFS的名称空间
 2、配置副本策略
-
 3、管理数据块的映射信息
-
 4、处理客户端读写请求
+```
 
 DataNode:就是Slave。NameNode下达命令，DataNode执行实际的操作。
 
+```
 1、存储实际的数据块
-
 2、执行数据块的读写操作
+```
 
 Client：就是客户端
 
+```
 1、文件切分，将文件切分为一个个Block(默认128M)，然后上传。
-
 2、与NameNode交互，获取文件的位置信息
-
 3、与DataNode交互，读取或者写入数据
-
 4、Client提供一些命令来管理HDFS，比如NameNode格式化。
-
 5、Client可通过一些命令来访问HDFS,比如对HDFS增删改查操作。
+```
 
 Secondary NameNode :当NameNode挂掉的时候，它并不能马上替换NameNode并提供服务。
 
+```
 1、辅助NameNode，分担工作量，日入定期合并Fsimage和Edits，并推送给NameNode;
-
 2、在紧急情况下，可恢复NameNode。
+```
 
 HDFS块的大小设置主要取决于磁盘传输速率，寻址时间为传输时间的1%时，则为最佳状态。
 
@@ -65,11 +66,11 @@ HDFS块的大小设置主要取决于磁盘传输速率，寻址时间为传输�
 
 上传文件时一定是非安全模式。集群启动后，自动退出安全模式。
 
-​     a、hdfs dfsadmin -safemode get 查看安全模式的状态。
-
+```t
+a、hdfs dfsadmin -safemode get 查看安全模式的状态。
 b、hdfs dfsadmin -safemode enter/leave 进入/离开安全模式
-
-​      c、hdfs dfsadmin -safemode wait等待安全模式
+c、hdfs dfsadmin -safemode wait等待安全模式
+```
 
 解决存储小文件的办法之一：
 
@@ -79,35 +80,31 @@ HDFS存档文件或者是HAR文件，是一个高效的文件存档工具，它�
 
 快照相当于对文件做一个备份，并不会立即复制所有文件，而是指向同一个文件，当写入发生时，才会产生新文件。
 
+```
 1、hdfs dfadmin -allowSnapshot 路径 开启快照
-
 2、hdfs dfadmin -disallowSnapshot 路径 关闭快照
-
 3、hdfs dfs -createSnapshot 路径  创建快照
-
 4、hdfs lsSnapshottableDir  查看快照
-
 5、hdfs snapshotDiff 路径1  .  路径2  比较两个路径的不同
+```
+
+
 
 ##### MapReduce:
 
 分布式运算程序编程框架，是用户开发“基于Hadoop”的编程框架。
 
-优势：1、MapReduce易于编程
-
-​			2、良好的可扩展性。
-
-​			3、高容错性。
-
-​			4、适合PB级以上海量数据的离线存储。
-
+```
+优势：
+1、MapReduce易于编程
+2、良好的可扩展性。
+3、高容错性。
+4、适合PB级以上海量数据的离线存储。
 缺点：
-
-​		1、不擅长实时计算
-
-​		2、不擅长流式计算
-
-​		3、不擅长DAG(有向图)的计算。
+1、不擅长实时计算
+2、不擅长流式计算
+3、不擅长DAG(有向图)的计算。
+```
 
 核心思想：
 
